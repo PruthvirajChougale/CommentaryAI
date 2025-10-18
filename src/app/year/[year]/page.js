@@ -160,7 +160,8 @@ export default function YearPage() {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/matches?year=${year}`);
+        // const res = await axios.get(`http://localhost:3000/api/matches?year=${year}`);
+        const res = await axios.get(`api/matches?year=${year}`);
         setMatches(res.data.matches || []);
       } catch (err) {
         console.error(err);
@@ -172,13 +173,13 @@ export default function YearPage() {
   }, [year]);
 
   const getDetails = async(id) => {
-    const res = await axios.get(`http://localhost:3000/api/getDetails?id=${id}&year=${year}`);
+    const res = await axios.get(`api/getDetails?id=${id}&year=${year}`);
     setMatchDetails(res.data.matchDetails);
     console.log(res.data);
   }
 
   const getVideo = async (id) => {
-    const res = await axios.get(`http://localhost:3000/api/generateVideo?id=${id}&year=${year}`);
+    const res = await axios.get(`api/generateVideo?id=${id}&year=${year}`);
     setVideo(res.data.videoUrl);
   }
 
